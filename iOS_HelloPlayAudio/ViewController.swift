@@ -44,6 +44,17 @@ class ViewController: UIViewController {
             } catch {
                 
             }
+        
+        // guard let
+        guard let newPath = Bundle.main.path(forResource: "Right", ofType: "mp3") else {
+            print("no such path")
+            return
+        }
+        let url3 = URL(filePath: newPath)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url3)
+        } catch {
+            print(error.localizedDescription)
         }
         
     }
