@@ -35,6 +35,7 @@ class ViewController: UIViewController {
             let url2 = URL(filePath: path)
             
             do{
+                // make an audio player
                 audioPlayer = try AVAudioPlayer(contentsOf: url2)
                 // 調整屬性
                 audioPlayer?.enableRate = true // 可調速率
@@ -42,8 +43,11 @@ class ViewController: UIViewController {
                 audioPlayer?.numberOfLoops = -1 // -1, 0, 1, 2, ... // 播放次數
                 audioPlayer?.volume = 0.3 // 音量
             } catch {
-                
+                print(error.localizedDescription)
             }
+        } else {
+            print("no such file")
+        }
         
         // guard let
         guard let newPath = Bundle.main.path(forResource: "Right", ofType: "mp3") else {
