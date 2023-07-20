@@ -27,15 +27,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // 讀取音檔
-        // find sound path // 檔案位置路徑
+        // find sound path // 1. 檔案位置路徑
         if let path = Bundle.main.path(forResource: "Right", ofType: "mp3") {
             
-            // URL 資料格式
-            // let url = URL(fileURLWithPath: path) // 背拋棄
+            // 2. URL 資料格式
+            // let url = URL(fileURLWithPath: path) // 背拋棄 舊的用法
             let url2 = URL(filePath: path)
             
             do{
-                // make an audio player
+                // 3. make an audio player
                 audioPlayer = try AVAudioPlayer(contentsOf: url2)
                 // 調整屬性
                 audioPlayer?.enableRate = true // 可調速率
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
             print("no such path")
             return
         }
-        let url3 = URL(filePath: newPath)
+        let url3 = URL(filePath: newPath) // newPath 的 scope 範圍可取得
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url3)
         } catch {
